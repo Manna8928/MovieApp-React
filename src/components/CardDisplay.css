@@ -1,0 +1,12 @@
+.card-display {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  /* position: fixed; */
+  top: 20px;
+  justify-content: center;
+}
+
+main {
+  position: relative;
+}

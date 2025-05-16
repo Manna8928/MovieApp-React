@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(
+      0deg,
+      rgba(97, 6, 9, 1) 9%,
+      rgba(129, 8, 14, 1) 44%,
+      rgba(181, 11, 22, 1) 63%,
+      rgba(184, 21, 34, 1) 77%,
+      rgba(187, 32, 47, 1) 80%,
+      rgba(191, 46, 63, 1) 96%
+    )
+    no-repeat rgba(97, 6, 9, 1);
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #610609;
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 15px;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding-top: 30px;
+}
+
+.navlink {
+  color: white;
+  text-decoration: none;
+}
+
+.favCardDisplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+  gap: 40px;
+  color: white;
+}
+
+.favCardTileDisplay {
+  display: flex;
+  gap: 20px;
+}

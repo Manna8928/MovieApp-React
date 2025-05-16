@@ -1,0 +1,28 @@
+.searchMovie {
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+.searchAndGenere {
+  /* margin: auto; */
+  display: flex;
+  gap: 50px;
+  width: 100%;
+  justify-content: center;
+}
+.searchInput {
+  font-size: 20px;
+  /* margin: auto; */
+  border-radius: 5px;
+  /* height: 40px; */
+  padding: 10px;
+  width: 50%;
+}
+
+.options {
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+}

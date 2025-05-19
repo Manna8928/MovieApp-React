@@ -1,18 +1,28 @@
 .details_main {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.details_main section {
+  display: flex;
   flex-direction: row;
-  width:70%;
+  width: 70%;
   justify-content: space-between;
   margin: auto;
   margin-top: 100px;
   /* border: 2px black solid; */
   gap: 20px;
 }
+
 .image {
   /* object-fit: cover; */
   /* padding: 10px; */
   /* border: 2px green solid; */
 }
+
 .data {
   /* border: 2px yellow solid; */
   min-width: 60%;

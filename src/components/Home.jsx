@@ -1,21 +1,27 @@
-import React from 'react';
-// import '../App.css';
+import React, { useState } from 'react';
 import SearchMovie from '/src/components/SearchMovie';
 import CardDisplay from '/src/components/CardDisplay';
 
-export default function Home({movieList, setMovieList, favList, setFavList}) {
+export default function Home({ movieList, setMovieList, favList, setFavList }) {
+  
+
   return (
     <>
       <main>
         <h1>Movie Search</h1>
-        <SearchMovie movieList={movieList} setMovieList={setMovieList}>
+      
+        <SearchMovie movieList={movieList} 
+                     setMovieList={setMovieList}
+                    
+                     >
           <CardDisplay
             movieList={movieList}
             favList={favList}
             setFavList={setFavList}
+
           />
         </SearchMovie>
-      </main>
+      </main >
     </>
   );
 }

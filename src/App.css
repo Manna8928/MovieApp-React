@@ -33,6 +33,7 @@ main {
   align-items: center;
   color: white;
   padding-top: 30px;
+  /* height: 100vh; */
 }
 
 .navlink {
@@ -53,4 +54,28 @@ main {
 .favCardTileDisplay {
   display: flex;
   gap: 20px;
+}
+.paging{
+  display: flex;
+  gap:10px;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+}
+
+.paging div{
+  border-radius: 3px;
+  height: 30px;
+  width: 50px;
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  font-size: 18px;
+}
+
+.pageIcon{
+  cursor: pointer;
 }

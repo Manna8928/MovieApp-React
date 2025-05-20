@@ -19,8 +19,7 @@ const SearchMovie = (props) => {
   }, [setMaxPages]);
 
   let url = useMemo(() => {
-    if(type) return `https://www.omdbapi.com/?apikey=5ffea7a1&type=${type}&page=${page}&s=`;
-    return "https://www.omdbapi.com/?apikey=5ffea7a1&page=" + page + "&s=";
+    return `https://www.omdbapi.com/?apikey=5ffea7a1&page=${page}${type ? `&type=${type}` : ""}&s=`;
   }, [page, type]);
 
   const sendQuery = useCallback(

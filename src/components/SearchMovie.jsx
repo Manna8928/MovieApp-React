@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import '/src/components/SearchMovie.css';
 import { useState, useEffect, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,13 +11,16 @@ const SearchMovie = (props) => {
   const { movieList, setMovieList } = props;
   const [showLoader, setShowLoader] = useState(false);
   const [page, setPage] = useState(1)
-  const [maxPages, setMaxPages] = useState(1)
+  const [maxPages, setMaxPages] = useState(1);
+  const [type, setType] = useState("");
 
-  function calculatePages(totalResult) {
-    setMaxPages(Math.ceil(totalResult / 10));
-  }
+  const calculatePages = useCallback((totalResult)=> {
+      setMaxPages(Math.ceil(totalResult / 10));
+  }, [setMaxPages]);
 
-  let url = "https://www.omdbapi.com/?apikey=5ffea7a1&page=" + page + "&s=";
+  let url = useMemo(() => {
+    return `https://www.omdbapi.com/?apikey=5ffea7a1&page=${page}${type ? `&type=${type}` : ""}&s=`;
+  }, [page, type]);
 
   const sendQuery = useCallback(
     async (movieName) => {
@@ -34,7 +37,7 @@ const SearchMovie = (props) => {
         console.log('error', error);
       }
     },
-    [setMovieList, url, setShowLoader]
+    [setMovieList, page, setShowLoader, url, calculatePages]
   );
 
   const debouncedSendQuery = useCallback(_.debounce(sendQuery, 400), [
@@ -43,7 +46,7 @@ const SearchMovie = (props) => {
 
   useEffect(() => {
     if (movieName) debouncedSendQuery(movieName);
-  }, [movieName, page]);
+  }, [movieName, page, type]);
 
   return (
 
@@ -60,13 +63,13 @@ const SearchMovie = (props) => {
             setMovieName(e.target.value);
           }}
         />
-        <select className="options" onChange={()=>{
-          
+        <select className="options" value={type} onChange={(e)=>{
+          setType(e.target.value)
         }}>
-          <option value="all">All</option>
-          <option value="movies">Movies</option>
+          <option value="">All</option>
+          <option value="movie">Movies</option>
           <option value="series">Series</option>
-          <option value="episodes">Episodes</option>
+          <option value="episode">Episodes</option>
         </select>
       </div>
 
@@ -90,9 +93,10 @@ const SearchMovie = (props) => {
             }}
           />
         </section>}
-      {showLoader && <img className="loader" src="./assets/loader.gif"
-        alt="load image" />}
-      {props.children}
+      {showLoader ? <img className="loader" src="./assets/loader.gif"
+        alt="load image" />
+        :
+      props.children}
       {/* <CardDisplay movieList={movieList} />; */}
     </div>
   );
